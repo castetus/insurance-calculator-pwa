@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+  const banks = `АКБарс: 15%
+Бинбанк: 0
+Возрождени: 15%
+ВТБ: 15%
+Газпром банк: 20%
+Глобэксбанк: 20%
+Дальневосточный банк: 15%
+ДОМ.РФ: 5%
+Зенит: 15%
+Интеза: 10%
+КредитЕвропаБанк: 15%
+Металлинвестбанк: 15%
+Московский Индустриальный Банк (Минбанк): 15%
+Открытие: 0%
+ПромСвязьБанк: 15%
+Райффайзен: 15%
+Росбанк (Дельта Кредит): 15%
+РостФинанс: 0
+РСХБ: 15%
+Сбербанк: 45%
+Связь банк: 20%
+Северный Морской Путь (СМП): 20%
+Союз: 0
+ТрансКапиталБанк: 15%
+Уралсиб: 15%
+Уральский Банк реконструкции и развития (УБРиР): 15%
+Юникредит: 15%`
+
+const test = {name: '', label: 'bank', comission: '15%'}
+const sber = `21 0.263 0.204
+22 0.271 0.204
+23 0.271 0.204
+24 0.297 0.212
+25 0.297 0.212
+26 0.297 0.212
+27 0.305 0.229
+28 0.305 0.237
+29 0.323 0.237
+30 0.347 0.237
+31 0.365 0.246
+32 0.381 0.263
+33 0.391 0.271
+34 0.425 0.271
+35 0.441 0.297
+36 0.483 0.323
+37 0.509 0.347
+38 0.535 0.357
+39 0.568 0.381
+40 0.594 0.391
+41 0.628 0.415
+42 0.662 0.441
+43 0.704 0.467
+44 0.738 0.501
+45 0.772 0.526
+46 0.856 0.560
+47 0.924 0.602
+48 1.009 0.645
+49 1.094 0.687
+50 1.196 0.738
+51 1.307 0.798
+52 1.417 0.856
+53 1.544 0.916
+54 1.688 1.001
+55 1.832 1.077`
+
+function transform (str){
+  let arr = str.split(/\r\n|\r|\n/g)
+  let result = []
+  for (let i = 0; i < arr.length; i++){
+    let newArr = arr[i].split(': ')
+    let comission = newArr[1].split('').pop()
+    let newComission = null
+    if (comission.length && Array.isArray(comission)){
+      newComission = comission.join('')
+    } else {
+      newComission = 0
+    }
+    console.log(comission)
+    let newItem = '{id: ' + i + ', label: `' + newArr[0] + '`, comission: `' + newArr[1] + '`},'
+    result.push(newItem)
+  }
+  console.log(result)
+}
+
+function transform2(str){
+  let arr = str.split(/\r\n|\r|\n/g)
+  let result = []
+  for (let item of arr){
+    let arrItem = item.split(' ')
+    console.log(arrItem)
+    let newitem = `${arrItem[0]}: {male: ${(arrItem[1] * 0.01).toFixed(4)}, female: ${(arrItem[2] * 0.01).toFixed(4)}}, `
+    result.push(newitem)
+    
+  }
+  console.log(result.join(''))
+}
+transform2(sber)
+// transform(banks)
+</script>
+</html>
