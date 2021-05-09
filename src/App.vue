@@ -5,7 +5,10 @@
 </template>
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  created(){
+    this.$store.dispatch('insurancecalc/GET_DATA');
+  }
 }
 </script>
 <style lang="scss">

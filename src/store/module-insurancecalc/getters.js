@@ -1,4 +1,7 @@
 export default {
+  READY(state){
+    return state.ready
+  },
   LIST_TEXT(state){
     return state.listTextBlocks
   },
@@ -10,5 +13,8 @@ export default {
   },
   RATES(state){
     return state.rates
+  },
+  UID(state){
+    return state.uid
   }
 }

@@ -67,6 +67,7 @@
       class="q-my-md" 
       icon="mdi-text-box" 
       label="Список документов" />
+    <div style="display: none">{{listText}}</div>
   </q-page>
 </template>
 
@@ -149,26 +150,32 @@ export default {
       return this.debtSum
     }
   },
+  mounted(){
+    const isPartner = localStorage.getItem('insurancePartner');
+    if (!isPartner && this.$route.path !== '/enter'){
+      this.$router.push('/enter');
+    }
+  },
   methods: {
     copyText(text){
       copyToClipboard(text)
     },
     calcTitleCost(companyId) {
       const company = this.INS_COMPANIES.find(company => company.id === companyId)
-      return Math.round(this.setDebt * company.banks[this.bank.value].title)
+      return Math.ceil(this.setDebt * company.banks[this.bank.value].title)
     },
     calcEstateCost(companyId) {
       const company = this.INS_COMPANIES.find(company => company.id === companyId)
-      return Math.round(this.setDebt * company.banks[this.bank.value].estate)
+      return Math.ceil(this.setDebt * company.banks[this.bank.value].estate)
     },
     calcLifeCost(companyId) {
       const company = this.INS_COMPANIES.find(company => company.id === companyId)
       const lifeType = typeof company.banks[this.bank.value].life
       if (lifeType === 'string'){
         const rate = this.RATES[company.banks[this.bank.value].life]
-        return Math.round(this.setDebt * rate[this.setAge][this.gender])
+        return Math.ceil(this.setDebt * rate[this.setAge][this.gender])
       } else {
-        return Math.round(this.setDebt * company.banks[this.bank.value].life)
+        return Math.ceil(this.setDebt * company.banks[this.bank.value].life)
       }
     },
     calc() {
@@ -178,8 +185,9 @@ export default {
       if (this.risks.includes('life') && (!this.gender || this.birthDate === '')){
         return
       }
-      let insuranceCost = 0
+      
       for (let company of this.INS_COMPANIES){
+        let insuranceCost = 0
         const result = {}
         const resArr = []
 
@@ -198,7 +206,7 @@ export default {
           insuranceCost = insuranceCost + calcTitleCost
           resArr.push(calcTitleCost)
         }
-        const resultSum = Math.round((insuranceCost * this.bank.comission * 0.87) / 2)
+        const resultSum = Math.ceil((insuranceCost * this.bank.comission * 0.87) / 2)
         result.id = company.id
         result.label = company.label
         result.text = `Комиссия по ${this.bank.label} составляет ${this.setPercentage(this.bank.comission)}. `

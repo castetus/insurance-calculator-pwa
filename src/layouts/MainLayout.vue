@@ -3,6 +3,7 @@
     <q-header elevated class="bg-orange">
       <q-toolbar>
         <q-btn
+          v-if="login"
           flat
           dense
           round
@@ -13,7 +14,7 @@
         />
 
         <q-toolbar-title>
-          Калькулятор
+          Калькулятор стоимости ипотечного страхования
         </q-toolbar-title>
 
         
@@ -22,11 +23,21 @@
 
     <q-drawer
       v-model="leftDrawerOpen"
-      show-if-above
       bordered
       content-class="bg-grey-1"
+      v-if="login"
     >
       <q-list>
+        <q-item to="/" clickable v-ripple>
+          <q-item-section>
+            Калькулятор
+          </q-item-section>
+        </q-item>
+        <q-item to="/admin" clickable v-ripple>
+          <q-item-section>
+            Ввод данных
+          </q-item-section>
+        </q-item>
       </q-list>
     </q-drawer>
 
@@ -44,6 +55,12 @@ export default {
   data () {
     return {
       leftDrawerOpen: false,
+    }
+  },
+  computed: {
+    login(){
+      console.log(this.$store.getters['insurancecalc/UID'])
+      return this.$store.getters['insurancecalc/UID']
     }
   }
 }

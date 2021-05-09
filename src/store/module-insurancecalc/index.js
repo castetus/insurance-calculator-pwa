@@ -1,3 +1,7 @@
+import firebase from 'firebase/app'
+
+require('firebase/auth')
+
 import state from './state'
 import getters from './getters'
 import * as mutations from './mutations'
