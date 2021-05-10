@@ -111,7 +111,10 @@ module.exports = function (/* ctx */) {
     // https://v1.quasar.dev/quasar-cli/developing-pwa/configuring-pwa
     pwa: {
       workboxPluginMode: 'GenerateSW', // 'GenerateSW' or 'InjectManifest'
-      workboxOptions: {}, // only for GenerateSW
+      workboxOptions: {
+        skipWaiting: true,
+        clientsClaim: true
+      }, // only for GenerateSW
       manifest: {
         name: `Insurance Calc`,
         short_name: `Insurance Calc`,
@@ -119,7 +122,7 @@ module.exports = function (/* ctx */) {
         display: 'standalone',
         orientation: 'portrait',
         background_color: '#ffffff',
-        theme_color: '#027be3',
+        theme_color: '#ff9800',
         icons: [
           {
             src: 'icons/icon-128x128.png',

@@ -14,7 +14,7 @@
         />
 
         <q-toolbar-title>
-          Калькулятор стоимости ипотечного страхования
+          Калькулятор полисов
         </q-toolbar-title>
 
         
@@ -59,7 +59,6 @@ export default {
   },
   computed: {
     login(){
-      console.log(this.$store.getters['insurancecalc/UID'])
       return this.$store.getters['insurancecalc/UID']
     }
   }

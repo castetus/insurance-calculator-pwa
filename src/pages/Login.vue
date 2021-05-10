@@ -1,9 +1,9 @@
 <template>
   <div class="fullscreen bg-orange text-white text-center q-pa-md flex flex-center">
     <div>
-      <h1>Калькулятор стоимости ипотечного страхования</h1>
+      <h4 class="q-my-lg">Калькулятор стоимости ипотечного страхования</h4>
 
-      <div class="text-h2" style="opacity:.4">
+      <div class="text-h6" style="opacity:.4">
         Вход для администратора
       </div>
       <q-input v-model="email" bg-color="white" type="email" hint="Email" />
@@ -11,7 +11,7 @@
       <q-btn
         class="q-mt-xl"
         color="white"
-        text-color="blue"
+        text-color="orange"
         unelevated
         @click="login"
         label="Вход"

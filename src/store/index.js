@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 // var firebase = require('firebase/app')
 import firebase from 'firebase/app';
-import insurancecalc from './module-insurancecalc'
+import insurancecalc from './module-insurancecalc';
 
 Vue.use(Vuex)
 

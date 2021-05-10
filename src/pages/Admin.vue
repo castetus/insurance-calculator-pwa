@@ -203,8 +203,8 @@ export default {
       })
       data.forEach((item) => {
         rate[item[0]] = {}
-        rate[item[0]].male = parseFloat((item[1]  * 0.01).toFixed(4));
-        rate[item[0]].female = parseFloat((item[2]  * 0.01).toFixed(4));
+        rate[item[0]].male = parseFloat((item[1]  * 0.01).toFixed(5));
+        rate[item[0]].female = parseFloat((item[2]  * 0.01).toFixed(5));
       })
       this.$set(this.rates, rateIdentifier, rate);
     },
