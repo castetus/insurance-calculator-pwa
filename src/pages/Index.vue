@@ -289,7 +289,6 @@ export default {
       const lifeType = typeof company.banks[this.bank.value].life;
       if (lifeType === "string") {
         const rate = this.RATES[company.banks[this.bank.value].life];
-        // console.log(this.RATES[company.banks[this.bank.value].life])
         if (!rate[this.setAge] || !rate[this.setAge][this.gender]) {
           console.log('impossible')
           return 0;
@@ -325,7 +324,7 @@ export default {
 
       for (let company of this.INS_COMPANIES) {
         if (!company.banks[this.bank.value]) {
-          return;
+          continue;
         }
         let insuranceCost = 0;
         const result = {};
@@ -373,7 +372,9 @@ export default {
         if (oldResult !== -1) {
           this.results.splice(oldResult, 1);
         }
-        this.results.push(result);
+        if (result.life !== 0) {
+          this.results.push(result);
+        }
       }
       this.setListText();
     },
@@ -391,7 +392,3 @@ export default {
 };
 </script>
 <style></style>
-
-function newFunction(age) {
-	console.log(age, now);
-}
