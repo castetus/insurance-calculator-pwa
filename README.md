@@ -1,5 +1,10 @@
 # Insurance Calc (comission-calculator)
 
+Quasar-build PWA for calc insurance cost and comissions.
+Quasar.js + firebase.
+
+Admin dashboard with import from .csv files.
+
 App for calculating insurance comission
 
 ## Install the dependencies
@@ -21,6 +26,3 @@ npm run lint
 ```bash
 quasar build
 ```
-
-### Customize the configuration
-See [Configuring quasar.conf.js](https://v1.quasar.dev/quasar-cli/quasar-conf-js).
